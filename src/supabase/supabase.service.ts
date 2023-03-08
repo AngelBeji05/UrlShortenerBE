@@ -16,8 +16,7 @@ export class SupabaseService extends SupabaseClient {
             password: user.password,
             options: {
                 data: {
-                    first_name: user.firstName,
-                    last_name: user.lastName
+                    username: user.username
                 }
             }
         })
@@ -37,6 +36,5 @@ export class SupabaseService extends SupabaseClient {
 class User {
     email: string
     password: string
-    firstName: string
-    lastName: string 
+    username: string
 }
