@@ -234,6 +234,17 @@ model profiles {
   username   String    @unique @db.VarChar
   email      String    @unique @db.VarChar
   users      users     @relation(fields: [id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  urls       urls[]
+
+  @@schema("public")
+}
+
+model urls {
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  user_id    String    @db.Uuid
+  url        String
+  id         Int       @id @default(autoincrement())
+  profiles   profiles  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@schema("public")
 }
